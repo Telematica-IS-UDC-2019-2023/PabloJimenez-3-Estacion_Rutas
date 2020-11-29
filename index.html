@@ -1,0 +1,58 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Agregar Base</h2>
+    <label for='nameBase'>Nombre:</label>
+    <input type='text' id='nameBase'>
+    <br/>
+
+    <label for='minsBase'>Duración:</label>
+    <input type='number' id='minsBase'>
+    <br/>
+
+    <button id='addBase'>Agregar</button>
+    <button id='delBase'>Borrar</button>
+    <button id='searchBase'>Buscar</button>
+    <button id='listBase'>Imprimir</button>
+
+    <br/>
+    <br/>
+
+    
+    <label for='positionBase'>Posicion:</label>
+    <input type='number' id='positionBase'>
+    <button id='changePosBase'>Insertar</button>
+    <br/>
+
+    <label for='' id='baseList'></label>
+    <br/>
+    <label for='' id='baseName'></label>
+    <br/>
+    <label for='' id='baseTime'></label>
+    <br/>
+    <label for='' id='baseNext'></label>
+    <br/>
+    <label for='' id='basePrevious'></label>
+    <br/>
+
+
+    <h2>Tarjeta de trabajo</h2>
+    <label for='startBase'>Base inicial:</label>
+    <input type='text' id='startBase'>
+    <br/>
+    <label for='startTime'>Hora de inicio:</label>
+    <input type='time' id='startTime'>
+    <br/>
+    <label for='endTime'>Hora de finalizacion:</label>
+    <input type='time' id='endTime'>
+    <br/>
+    <button id='btnCreateCard'>Crear</button>
+    <br/>
+    <label for='basesListed' id='listedBases'></label>
+</body>
+<script type='module' src='main.js'></script>
+</html>
