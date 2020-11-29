@@ -24,7 +24,7 @@ var xbaseName = document.querySelector('#baseName')
 var xbaseTime = document.querySelector('#baseTime')
 var xbaseNext = document.querySelector('#baseNext')
 var xbasePrevious = document.querySelector('#basePrevious')
-var xbasesListed = document.querySelector('#listedBases')
+
 
 
 
@@ -34,7 +34,7 @@ var base;
 btnAdd.addEventListener('click', () => {
 console.clear()
     let nombre = document.getElementById('nameBase').value
-    let minutos = document.getElementById('minsBase').value
+    let minutos = Number(document.getElementById('minsBase').value)
 
     if(nombre == '' && minutos == ''){
         alert('No se pase, llene todos los campos')
@@ -95,21 +95,26 @@ console.clear();
 btnCreateCard.addEventListener('click', () => {
 console.clear();
 
+    
+    let inicio = document.querySelector('#startTime')
+    let final = document.querySelector('#endTime')
+
+    let initialHour = new Date()
+    initialHour.setHours(inicio.value.slice(0,2))
+    initialHour.setMinutes(inicio.value.slice(-2))
+
+    let endingHour = new Date()
+    endingHour.setHours(final.value.slice(0,2))
+    endingHour.setMinutes(final.value.slice(-2))
+
     let nombre = document.getElementById('startBase').value
-    let startTime = document.querySelector('#startTime').value
-    let endTime = document.querySelector('#endTime').value
 
-    let initHour = new Date()
-    initHour.setHours(startTime.slice(0,2))
-    initHour.setMinutes(startTime.slice(-2))
-
-    let endHour = new Date()
-    endHour.setHours(endTime.slice(0,2))
-    endHour.setMinutes(endTime.slice(-2))
-
-
-    console.log(ruta.recorrido(nombre,initHour,endHour))
-    //xbasesListed.innerHTML = `${ruta.recorrido(nombre,initHour,endHour)}`
+    console.log(ruta.recorrido(nombre, initialHour, endingHour))
+    var divMsg = document.createElement('div')
+    var xbasesListed = document.querySelector('#listedBases')
+    xbasesListed.appendChild(divMsg)
+    
+    divMsg.innerHTML = `${ruta.recorrido(nombre, initialHour, endingHour)}`
 
 })
 

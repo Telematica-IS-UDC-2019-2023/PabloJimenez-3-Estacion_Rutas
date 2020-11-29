@@ -1,7 +1,7 @@
 let Ruta = (function(numero){
 
     this.numero = numero;
-    this.inicio = undefined;
+    this.inicio = null;
 
     function addBase(newBase){
         
@@ -19,7 +19,7 @@ let Ruta = (function(numero){
             aux.siguiente.siguiente = this.inicio;
             this.inicio.anterior = newBase;
         }
-        return newBase
+        
     }
 
     function searchBase(name){
@@ -28,7 +28,7 @@ let Ruta = (function(numero){
             while(aux.nombre != name && aux.siguiente != this.inicio){
                 aux = aux.siguiente
             }
-            if(aux.nombre == name){
+            if(aux.nombre === name){
                 return aux
             } else {
                 alert('No se ha encontrado esa Base!')
@@ -100,29 +100,28 @@ let Ruta = (function(numero){
     }
 
     function createPath(start, initHour, endHour){
-        let aux = this.buscar(start)
 
-        let connect = `"${aux.nombre}" - ${initHour.getHours()}:${initHour.getMinutes()}`
+        let aux = this.buscar(start)
+        let connect = `<p> || "${aux.nombre}" ${initHour.getHours()}:${initHour.getMinutes()} \n</p>`
 
         while(initHour.getHours() < endHour.getHours() || initHour.getMinutes() < endHour.getMinutes()){
+
             initHour.setMinutes(initHour.getMinutes() + aux.siguiente.minutos)
             aux = aux.siguiente;
-
-            connect += ` || "${aux.nombre}"  ${initHour.getHours()}:${initHour.getMinutes()}`
+            connect += `\n<p> || "${aux.nombre}" ${initHour.getHours()}:${initHour.getMinutes()}</p> \n`
         }
         return connect;
+        
     }
 
-
-
-
-
-    return {agregar: addBase,
+    return {
+            agregar: addBase,
             buscar: searchBase,
             borrar: deleteBase,
             insertar: changePos,
             listar: listBases,
-            recorrido: createPath}
+            recorrido: createPath
+        }
 });
 
 export {Ruta}
